@@ -1,19 +1,19 @@
 ## Nginx Dockerfile
 
 
-This repository contains **Dockerfile** of [Nginx](http://nginx.org/) for [Docker](https://www.docker.io/)'s [trusted build](https://index.docker.io/u/dockerfile/nginx/) published to the public [Docker Registry](https://index.docker.io/).
+This repository contains **Dockerfile** of [Nginx](http://nginx.org/) for [Docker](https://www.docker.com/)'s [automated build](https://registry.hub.docker.com/u/dockerfile/nginx/) published to the public [Docker Hub Registry](https://registry.hub.docker.com/).
 
 
-### Dependencies
+### Base Docker Image
 
 * [dockerfile/ubuntu](http://dockerfile.github.io/#/ubuntu)
 
 
 ### Installation
 
-1. Install [Docker](https://www.docker.io/).
+1. Install [Docker](https://www.docker.com/).
 
-2. Download [trusted build](https://index.docker.io/u/dockerfile/nginx/) from public [Docker Registry](https://index.docker.io/): `docker pull dockerfile/nginx`
+2. Download [automated build](https://registry.hub.docker.com/u/dockerfile/nginx/) from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull dockerfile/nginx`
 
    (alternatively, you can build an image from Dockerfile: `docker build -t="dockerfile/nginx" github.com/dockerfile/nginx`)
 
@@ -24,6 +24,6 @@ This repository contains **Dockerfile** of [Nginx](http://nginx.org/) for [Docke
 
 #### Attach persistent/shared directories
 
-    docker run -d -p 80:80 -v <sites-enabled-dir>:/etc/nginx/sites-enabled -v <log-dir>:/var/log/nginx dockerfile/nginx
+    docker run -d -p 80:80 -v <sites-enabled-dir>:/etc/nginx/conf.d -v <certs-dir>:/etc/nginx/certs -v <log-dir>:/var/log/nginx -v <html-dir>:/var/www/html dockerfile/nginx
 
-Open `http://<host>` to see the welcome page.
+After few seconds, open `http://<host>` to see the welcome page.
